@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="firestore_database_id" translatable="false">ai-studio-android-cashtrac-689f62e3-c745-4239-8469-170c59aaa791</string>
+    <string name="recaptcha_site_key" translatable="false">6LcLPQUuAAAAAFibdKGgfSQuSdBx3EKA74z57VKs</string>
+</resources>

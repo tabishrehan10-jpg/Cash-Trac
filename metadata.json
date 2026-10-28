@@ -1,0 +1,6 @@
+{
+  "name": "Cash Trace",
+  "description": "Smart personal finance and expense manager with API-based AI chat extraction, intelligent receipt & statement parsing, rollover balances, and visual spending trends.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

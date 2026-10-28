@@ -1,0 +1,8 @@
+{
+  "firestore": [
+    {
+      "database": "ai-studio-android-cashtrac-689f62e3-c745-4239-8469-170c59aaa791",
+      "rules": "firestore.rules"
+    }
+  ]
+}

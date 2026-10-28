@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RupeeWise Firestore Schema",
+  "entities": {
+    "Transaction": {
+      "collection": "users/{userId}/transactions",
+      "fields": {
+        "id": { "type": "number" },
+        "title": { "type": "string" },
+        "amount": { "type": "number" },
+        "type": { "type": "string" },
+        "category": { "type": "string" },
+        "paymentMode": { "type": "string" },
+        "timestamp": { "type": "number" },
+        "note": { "type": "string" },
+        "sourceTag": { "type": "string" },
+        "userId": { "type": "string" }
+      },
+      "required": ["id", "title", "amount", "type", "category", "timestamp", "userId"]
+    },
+    "BudgetConfig": {
+      "collection": "users/{userId}/budgets",
+      "fields": {
+        "monthKey": { "type": "string" },
+        "startingBalance": { "type": "number" },
+        "monthlyBudgetLimit": { "type": "number" },
+        "rolledOverFromPrevious": { "type": "number" },
+        "isAutoRollOverEnabled": { "type": "boolean" },
+        "userId": { "type": "string" }
+      },
+      "required": ["monthKey", "userId"]
+    }
+  }
+}

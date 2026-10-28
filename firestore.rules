@@ -1,0 +1,43 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isValidTransaction(data, userId) {
+      return data.userId == userId &&
+             data.title is string && data.title.size() > 0 &&
+             data.amount is number &&
+             (data.type == 'EXPENSE' || data.type == 'INCOME') &&
+             data.category is string &&
+             data.timestamp is number;
+    }
+
+    function isValidBudget(data, userId) {
+      return data.userId == userId &&
+             data.monthKey is string;
+    }
+
+    match /users/{userId} {
+      allow read, write: if isOwner(userId);
+
+      match /transactions/{transactionId} {
+        allow read: if isOwner(userId);
+        allow create, update: if isOwner(userId) && isValidTransaction(request.resource.data, userId);
+        allow delete: if isOwner(userId);
+      }
+
+      match /budgets/{monthKey} {
+        allow read: if isOwner(userId);
+        allow create, update: if isOwner(userId) && isValidBudget(request.resource.data, userId);
+        allow delete: if isOwner(userId);
+      }
+    }
+  }
+}
